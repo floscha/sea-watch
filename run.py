@@ -51,12 +51,15 @@ if __name__ == "__main__":
     global services
 
     args = sys.argv[1:]
-
     if len(args) != 1:
+        cprint("Usage: python run.py <path to docker-compose.yml>",
+               'red', timestamped=False)
         sys.exit(1)
 
     yml_path = args[0]
     if not yml_path.endswith('docker-compose.yml'):
+        cprint("Please point to 'docker-compose.yml' file.",
+               'red', timestamped=False)
         sys.exit(1)
 
     # Read docker-compose.yml.
