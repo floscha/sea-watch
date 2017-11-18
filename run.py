@@ -59,12 +59,13 @@ if __name__ == "__main__":
     if not yml_path.endswith('docker-compose.yml'):
         sys.exit(1)
 
-    # Read docker-compose.yml
+    # Read docker-compose.yml.
     with open(yml_path, 'r') as stream:
         try:
             compose_data = yaml.load(stream)
         except yaml.YAMLError as exc:
-            cprint(exc)
+            cprint(exc, 'red')
+            sys.exit(1)
 
     services = {k: v['build'] for k, v in compose_data['services'].items()}
 
