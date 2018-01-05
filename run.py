@@ -17,6 +17,21 @@ def cprint(str_, color=None, timestamped=True):
     print(colored(str_, color))
 
 
+def get_services_from_compose_data(compose_data):
+    """Extract services from the data of a compose file as a dict."""
+    services_dict = dict()
+
+    for k, v in compose_data['services'].items():
+        # Handle services built from local Dockerfiles.
+        if 'build' in v:
+            services_dict[k] = v['build']
+        # Handle services built from external images.
+        if 'image' in v:
+            services_dict[k] = v['image']
+
+    return services_dict
+
+
 class CodeChangeHandler(PatternMatchingEventHandler):
     """Handler class to rebuild and update services when their code changes."""
 
@@ -70,7 +85,7 @@ if __name__ == "__main__":
             cprint(exc, 'red')
             sys.exit(1)
 
-    services = {k: v['build'] for k, v in compose_data['services'].items()}
+    services = get_services_from_compose_data(compose_data)
 
     base_dir = os.path.dirname(os.path.realpath(yml_path))
     os.chdir(base_dir)
