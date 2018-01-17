@@ -39,27 +39,26 @@ class CodeChangeHandler(PatternMatchingEventHandler):
 
     def on_modified(self, event):
         """Execute for every file change event."""
-        if event.src_path.endswith('.py'):
-            affected_services = [s for s in services
-                                 if services[s] in event.src_path]
-            if len(affected_services) == 1:
-                affected_service = affected_services[0]
-                cprint("Changes in service '%s' detected." % affected_service,
-                       'yellow')
-                cprint("The following running instances are affected:")
-                terminal_output = os.popen('docker-compose ps').read()
-                service_names = [l.split()[0] for l in
-                                 terminal_output.split('\n')[2:-1]]
-                affected_instances = []
-                for sn in service_names:
-                    if affected_service in sn:
-                        affected_instances.append(sn)
-                for sn in affected_instances:
-                    cprint("\t%s" % sn, 'blue', timestamped=False)
+        affected_services = [s for s in services
+                             if services[s] in event.src_path]
+        if len(affected_services) == 1:
+            affected_service = affected_services[0]
+            cprint("Changes in service '%s' detected." % affected_service,
+                   'yellow')
+            cprint("The following running instances are affected:")
+            terminal_output = os.popen('docker-compose ps').read()
+            service_names = [l.split()[0] for l in
+                             terminal_output.split('\n')[2:-1]]
+            affected_instances = []
+            for sn in service_names:
+                if affected_service in sn:
+                    affected_instances.append(sn)
+            for sn in affected_instances:
+                cprint("\t%s" % sn, 'blue', timestamped=False)
 
-                # Restart service through Docker Compose.
-                os.popen('docker-compose up -d --no-deps --build %s'
-                         % affected_service).read()
+            # Restart service through Docker Compose.
+            os.popen('docker-compose up -d --no-deps --build %s'
+                     % affected_service).read()
 
 
 if __name__ == "__main__":
