@@ -18,8 +18,3 @@ $ python run.py <path to docker-compose.yml>
 ```
 
 __Sea Watch__ will now wait for source code changes and automatically update the services within their Docker Compose environment.
-
-
-## Limitations
-
-- So far only works for Python code.
