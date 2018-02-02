@@ -1,10 +1,10 @@
 import datetime
 import os
 import sys
-from termcolor import colored
 import time
 import yaml
 
+from termcolor import colored
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
 
