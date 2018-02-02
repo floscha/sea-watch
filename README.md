@@ -8,7 +8,7 @@ Simple observer that rebuilds and updates single Docker services when their code
 ## Usage
 
 1. Make sure Python (including pip) is installed.
-2. From within the project folder, install _Sea Watch_ like so:
+2. From within the project folder, install __Sea Watch__ like so:
 ```
 $ pip install .
 ```
