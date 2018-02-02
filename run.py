@@ -1,3 +1,4 @@
+"""Entry point and main logic of the Sea Watch script."""
 import datetime
 import os
 import sys
@@ -7,6 +8,9 @@ import yaml
 from termcolor import colored
 from watchdog.events import PatternMatchingEventHandler
 from watchdog.observers import Observer
+
+
+__all__ = ('main',)
 
 
 def cprint(str_, color=None, timestamped=True):
@@ -27,7 +31,7 @@ def get_services_from_compose_data(compose_data):
             if type(v['build']) is not str:
                 raise ValueError("Nested build options are not supported " +
                                  "at the moment")
-                
+
             services_dict[k] = v['build']
         # Handle services built from external images.
         if 'image' in v:
@@ -66,7 +70,8 @@ class CodeChangeHandler(PatternMatchingEventHandler):
                      % affected_service).read()
 
 
-if __name__ == "__main__":
+def main():
+    """Entrypoint to the ``seawatch`` umbrella command."""
     global services
 
     args = sys.argv[1:]
@@ -111,3 +116,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         observer.stop()
     observer.join()
+
+
+if __name__ == '__main__':
+    main()
