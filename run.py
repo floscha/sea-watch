@@ -98,7 +98,8 @@ if __name__ == "__main__":
 
     base_dir = os.path.dirname(os.path.realpath(yml_path))
     os.chdir(base_dir)
-    cprint("Sea Watch is now observing '%s'." % base_dir, 'green')
+    cprint("Sea Watch is now observing %s files for '%s'."
+           % (observed_file_extensions, base_dir), 'green')
 
     # Start observer.
     event_handler = CodeChangeHandler(observed_file_extensions)
