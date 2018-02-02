@@ -12,7 +12,7 @@ Simple observer that rebuilds and updates single Docker services when their code
 ```
 $ pip install -r requirements.txt
 ```
-3. Run the _run.py_ script poiting to the _docker-compose.yml_:
+3. Run the _run.py_ script pointing to the _docker-compose.yml_:
 ```
 $ python run.py <path to docker-compose.yml>
 ```
