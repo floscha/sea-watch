@@ -17,7 +17,7 @@ setup(
     zip_safe=False,
     entry_points={
         'console_scripts': [
-            'seawatch = run:main',
+            'seawatch = seawatch.__main__:main',
         ]
     }
 )
