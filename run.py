@@ -44,7 +44,7 @@ class CodeChangeHandler(PatternMatchingEventHandler):
 
     def on_modified(self, event):
         """Execute for every file change event."""
-        file_extension = event.src_path.split('.')[-1]:
+        file_extension = event.src_path.split('.')[-1]
         if file_extension in self.observed_file_extensions:
             affected_services = [s for s in services
                                  if services[s] in event.src_path]
