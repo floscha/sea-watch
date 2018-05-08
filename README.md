@@ -2,6 +2,7 @@
 
 # SeaWatch
 
+[![Build Status](https://travis-ci.org/floscha/seawatch.svg?branch=master)](https://travis-ci.org/floscha/seawatch)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0613cd30da64e4a92b7986ef8c3805c)](https://www.codacy.com/app/floscha/seawatch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=floscha/seawatch&amp;utm_campaign=Badge_Grade)
 
 Simple observer that rebuilds and updates single Docker services when their code changes.
