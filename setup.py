@@ -7,8 +7,9 @@ requirements = list(open('requirements.txt', 'r').readlines())
 setup(
     name=NAME,
     version='0.1',
-    description="High-level API for Pyplot to easily create beautiful graphs.",
-    url='https://github.com/flosch/pewdieplot',
+    description="Simple observer that rebuilds and updates single Docker "
+    + "services when their code changes.",
+    url='https://github.com/flosch/seawatch',
     author='Florian Schäfer',
     author_email='florian.joh.schaefer@gmail.com',
     license='MIT',
