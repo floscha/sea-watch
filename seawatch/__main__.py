@@ -49,7 +49,8 @@ class CodeChangeHandler(PatternMatchingEventHandler):
     def __init__(self, patterns):
         super(CodeChangeHandler, self).__init__(patterns=patterns)
 
-    def on_modified(self, event):
+    @classmethod
+    def on_modified(cls, event):
         """Execute for every file change event matching the patterns."""
         affected_services = [s for s in services
                              if services[s] in event.src_path]
