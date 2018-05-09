@@ -96,7 +96,7 @@ def main():
     # Read docker-compose.yml.
     with open(yml_path, 'r') as stream:
         try:
-            compose_data = yaml.load(stream)
+            compose_data = yaml.safe_load(stream)
         except yaml.YAMLError as exc:
             cprint(exc, 'red')
             sys.exit(1)
