@@ -32,8 +32,8 @@ def get_services_from_compose_data(compose_data):
         # Handle services built from local Dockerfiles.
         if 'build' in v:
             if isinstance(v['build']) is not str:
-                raise ValueError("Nested build options are not supported " +
-                                 "at the moment")
+                raise TypeError("Nested build options are not supported"
+                                + " at the moment")
 
             services_dict[k] = v['build']
         # Handle services built from external images.
