@@ -13,6 +13,9 @@ from watchdog.observers import Observer
 __all__ = ('main',)
 
 
+services = dict()
+
+
 def cprint(str_, color=None, timestamped=True):
     """Print in color and with a timestamp if needed."""
     timestamp = datetime.datetime.now().strftime('%H:%M:%S')
