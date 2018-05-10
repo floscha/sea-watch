@@ -80,8 +80,8 @@ def main():
 
     args = sys.argv[1:]
     if len(args) < 2:
-        cprint("Usage: python run.py <path to docker-compose.yml> " +
-               "[observed file extensions]",
+        cprint("Usage: python run.py <path to docker-compose.yml>"
+               + " [observed file extensions]",
                'red', timestamped=False)
         sys.exit(1)
 
